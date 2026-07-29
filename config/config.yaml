@@ -41,7 +41,8 @@ app:
 # ===============================================================
 schedule:
   enabled: true                         # 是否启用调度系统（true=启用, false=关闭，默认关闭）
-  preset: "night_owl"                   # 预设模板名称（见上方说明）
+#  preset: "night_owl"                   # 预设模板名称（见上方说明）
+  preset: "custom"                   # 预设模板名称（见上方说明）
 
 
 # ===============================================================
@@ -66,39 +67,38 @@ platforms:
   api_url: ""                            # 热榜数据 API 地址（留空使用默认地址）
                                         # 如果你自行部署了 newsnow，填入你的地址，如: https://your-domain.com/api/s
   sources:
-    - id: "toutiao"
-      name: "今日头条"
-      expected_domain: "toutiao.com"
-    - id: "baidu"
-      name: "百度热搜"
-      expected_domain: "baidu.com"
-    - id: "wallstreetcn-hot"
-      name: "华尔街见闻"
-      expected_domain: "wallstreetcn.com"
-    - id: "thepaper"
-      name: "澎湃新闻"
-      expected_domain: "thepaper.cn"
-    - id: "bilibili-hot-search"
-      name: "bilibili 热搜"
-      expected_domain: "bilibili.com"
-    - id: "cls-hot"
-      name: "财联社热门"
-      expected_domain: "cls.cn"
-    - id: "ifeng"
-      name: "凤凰网"
-      expected_domain: "ifeng.com"
-    - id: "tieba"
-      name: "贴吧"
-      expected_domain: "baidu.com"
-    - id: "weibo"
-      name: "微博"
-      expected_domain: "weibo.com"
-    - id: "douyin"
-      name: "抖音"
-      expected_domain: "douyin.com"
+    # AI 产品、开发者生态与开源趋势
+    - id: "producthunt"
+      name: "Product Hunt"
+      expected_domain: "producthunt.com"
+    - id: "github"
+      name: "GitHub Trending"
+      expected_domain: "github.com"
+    - id: "hackernews"
+      name: "Hacker News"
+      expected_domain: "news.ycombinator.com"
+    - id: "juejin"
+      name: "掘金"
+      expected_domain: "juejin.cn"
+
+    # 中文科技产品动态与视频生成应用信号
+    - id: "ithome"
+      name: "IT之家"
+      expected_domain: "ithome.com"
     - id: "zhihu"
       name: "知乎"
       expected_domain: "zhihu.com"
+    - id: "bilibili-hot-search"
+      name: "bilibili 热搜"
+      expected_domain: "bilibili.com"
+
+    # 综合新闻与公众舆情，用于判断 AI 事件是否出圈
+    - id: "weibo"
+      name: "微博"
+      expected_domain: "weibo.com"
+    - id: "thepaper"
+      name: "澎湃新闻"
+      expected_domain: "thepaper.cn"
 
 
 
@@ -127,9 +127,29 @@ rss:
   # - 正整数：覆盖全局设置，只推送此天数内的文章
   # - 0：禁用此频道的新鲜度过滤，推送所有文章
   feeds:
+    # 厂商和开发者平台的一手发布
+    - id: "openai-news"
+      name: "OpenAI News"
+      url: "https://openai.com/news/rss.xml"
+      max_items: 30
+      max_age_days: 1
+
+    - id: "google-ai-blog"
+      name: "Google AI Blog"
+      url: "https://blog.google/technology/ai/rss/"
+      max_items: 20
+      max_age_days: 1
+
+    - id: "github-changelog"
+      name: "GitHub Changelog"
+      url: "https://github.blog/changelog/feed/"
+      max_items: 20
+      max_age_days: 1
+
     - id: "hacker-news"
       name: "Hacker News"
       url: "https://hnrss.org/frontpage"
+      enabled: false                  # 已启用 NewsNow hackernews，避免重复
 
     - id: "ruanyifeng"
       name: "阮一峰的网络日志"
@@ -140,6 +160,37 @@ rss:
     - id: "yahoo-finance"
       name: "雅虎财经"
       url: "https://finance.yahoo.com/news/rssindex"
+      enabled: false                  # 与 AI/Agent/视频生成关注方向无关
+
+    - id: "agentscope-releases"
+      name: "AgentScope Releases"
+      url: "https://github.com/agentscope-ai/agentscope/releases.atom"
+      max_items: 10
+      max_age_days: 3
+
+    - id: "spring-ai-alibaba-releases"
+      name: "Spring AI Alibaba Releases"
+      url: "https://github.com/alibaba/spring-ai-alibaba/releases.atom"
+      max_items: 10
+      max_age_days: 3
+
+    - id: "hunyuan-video-releases"
+      name: "Tencent HunyuanVideo Releases"
+      url: "https://github.com/Tencent-Hunyuan/HunyuanVideo/releases.atom"
+      max_items: 10
+      max_age_days: 7
+
+    - id: "deepseek-v3-releases"
+      name: "DeepSeek V3 Releases"
+      url: "https://github.com/deepseek-ai/DeepSeek-V3/releases.atom"
+      max_items: 10
+      max_age_days: 7
+
+    - id: "verl-releases"
+      name: "Volcengine verl Releases"
+      url: "https://github.com/volcengine/verl/releases.atom"
+      max_items: 10
+      max_age_days: 3
 
     # 自定义源示例
     # - id: "custom-feed"
@@ -246,7 +297,8 @@ display:
   # 独立展示区：将指定平台/RSS 完整展示，不受关键词过滤
   # 推送展示由 regions.standalone 控制，AI 分析由 ai_analysis.include_standalone 控制
   standalone:
-    platforms: ["zhihu", "wallstreetcn-hot"]     # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
+#    platforms: ["zhihu", "wallstreetcn-hot"]     # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
+    platforms: []     # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
     rss_feeds: []                                # RSS 源 ID 列表（如 ["hacker-news"]）
     max_items: 20                                # 每个源最多展示条数（0=不限制）
 
@@ -425,10 +477,13 @@ ai_analysis:
   max_news_for_analysis: 150        # 参与分析的新闻数量上限（控制 token 成本的关键项）
                                     # 热榜优先占用配额，RSS 用剩余配额，独立展示区不受此限制
 
-  include_rss: false                # 是否包含 RSS 内容进行分析（true=包含, false=不包含）
-  include_standalone: true          # 是否纳入独立展示区数据（true=纳入, false=不纳入）
+#  include_rss: false                # 是否包含 RSS 内容进行分析（true=包含, false=不包含）
+  include_rss: true                # 是否包含 RSS 内容进行分析（true=包含, false=不包含）
+#  include_standalone: true          # 是否纳入独立展示区数据（true=纳入, false=不纳入）
+  include_standalone: false          # 是否纳入独立展示区数据（true=纳入, false=不纳入）
 
-  include_rank_timeline: true       # 排名时间线详细程度
+#  include_rank_timeline: true       # 排名时间线详细程度
+  include_rank_timeline: false       # 排名时间线详细程度
                                     # true = 完整轨迹（如 1(09:30)→2(10:00)），AI 分析更准但多耗 0.5~1 倍 token
                                     # false = 简化格式（排名范围+出现次数），更省 token
 
