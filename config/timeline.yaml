@@ -399,8 +399,8 @@ presets:
 #     其余时间走默认配置（静默采集）
 
 custom:
-  name: "AI 前沿早晚报"
-  description: "全天采集，早间快报，晚间全天汇总。"
+  name: "AI 前沿关键词早晚报"
+  description: "全天采集，通过关键词筛选，早间快报，晚间全天汇总。"
 
   # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   # 默认配置
@@ -423,7 +423,7 @@ custom:
                                    #   incremental → 只推送新增内容
 
                                    
-    # frequency_file: "general.txt"
+    frequency_file: "ai_news.txt"
                                    # 关键词文件（可选，位于 config/custom/keyword/）
                                    # 不填则使用默认的 config/frequency_words.txt
                                    # 时间段（period）中也可以设置此字段来覆盖默认值
@@ -439,13 +439,13 @@ custom:
                                    #   interests_file: "finance.txt"
                                    # 注意：仅在 filter_method 为 ai 时生效
 
-    # filter_method: "keyword"     # 筛选策略（可选: keyword | ai）
+    filter_method: "keyword"       # 筛选策略（可选: keyword | ai）
                                    # 不填则使用全局 config.yaml 的 filter.method
                                    # 时间段（period）中也可以设置此字段来覆盖
                                    # 例如晚间汇总用 AI 筛选：
                                    #   filter_method: "ai"
     once:
-      analyze: true                # 该时间段内只分析一次（省 API）
+      analyze: false               # 不执行 AI 分析
       push: true                   # 该时间段内只推送一次（省打扰）
 
 
@@ -468,7 +468,7 @@ custom:
       start: "08:00"
       end: "10:00"
       collect: true
-      analyze: true
+      analyze: false
       ai_mode: "current"
       push: true
       report_mode: "current"
@@ -478,7 +478,7 @@ custom:
       start: "20:00"
       end: "22:00"
       collect: true
-      analyze: true
+      analyze: false
       ai_mode: "daily"
       push: true
       report_mode: "daily"

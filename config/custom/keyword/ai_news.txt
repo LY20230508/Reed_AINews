@@ -1,0 +1,51 @@
+# TrendRadar AI news keyword rules
+#
+# Rules are evaluated against news titles. Product, model, and industry-level
+# topics are placed first so matching stays useful for a news feed.
+
+[GLOBAL_FILTER]
+震惊
+网传
+
+[WORD_GROUPS]
+
+[Pexo]
+/(?<![a-zA-Z])pexo(?![a-zA-Z])/
+@10
+
+[AI Agent]
+/\bAI\s*Agents?\b|\bAgentic\b|\bMulti[- ]Agents?\b|\bAgent Workflows?\b|智能体|多智能体|工具调用|\bTool Calling\b|\bFunction Calling\b|\bComputer Use\b|\bModel Context Protocol\b|(?<![a-zA-Z])MCP(?![a-zA-Z])|\bAgent Skills?\b|\bAgent Memory\b|\bContext Engineering\b|工作流自动化/
+@15
+
+[生成式媒体]
+/文生视频|图生视频|视频生成|生成式视频|图像生成|多模态生成|AI\s*视频|视频\s*AI|数字人|虚拟人|语音生成|音乐生成|\bSeedance\b|\bSeedream\b|\bSora\b|\bVeo\s*\d*\b|\bKling\b|可灵|\bRunway\b|\bPika\b|\bHunyuanVideo\b|混元视频|\bWan\s*\d+(?:\.\d+)?\b|万相|即梦|海螺视频|\bDream Machine\b|\bVidu\b|\bGemini Image\b|\bGPT Image\b|\bfal\.ai\b|\bElevenLabs\b/
+@15
+
+[AI 创作技术]
+/视频编辑|实时生成|角色一致性|长视频生成|可控生成|数字人|语音生成|音乐生成|AI\s*剪辑|智能剪辑/
+@15
+
+[内容与素材工作流]
+/\bURL to Video\b|网页转视频|素材管理|数字资产管理|\bDigital Asset Management\b|背景移除|\bBackground Removal\b|\bBrand Kit\b|\bContent Library\b|内容自动化|批量创作/
+@15
+
+[AI 评测与榜单]
+/AI\s*评测|模型评测|多模态评测|视频生成评测|\bAgent Eval\b|\bVBench\b|人工盲评|(?=.*(?:AI|模型|多模态|视频生成|Agent|智能体))(?=.*(?:排行榜|基准测试|Benchmark|Leaderboard)).*/
+@15
+
+[创作产品与竞品]
+/即梦|可灵|\bKling\b|\bRunway\b|\bCanva(?: Video)?\b|\bAdobe Firefly(?: Video)?\b|剪映|\bCapCut\b|\bHeyGen\b|\bSynthesia\b|\bInVideo\b|\bVEED\b|\bDescript\b|\bOpusClip\b/
+@15
+
+[AI 编程]
+/AI\s*编程|\bAI Coding\b|\bCoding Agent\b|\bClaude Code\b|\bOpenAI Codex\b|\bCursor\b|\bGitHub Copilot\b/
+@10
+
+[基础模型与多模态]
+/大模型|基础模型|多模态|推理模型|模型训练|模型推理|开源模型|\bLLM\b|\bVLM\b|\bOpenAI\b|\bChatGPT\b|\bAnthropic\b|\bClaude\b|\bGemini\b|\bDeepMind\b|\bDeepSeek\b|\bQwen\b|通义千问|\bGLM\b|智谱|\bMiniMax\b|\bKimi\b|\bMoonshot\b|\bLlama\b|\bMistral\b|\bGrok\b|\bxAI\b/
+@15
+
+[AI 产业动态]
++/(?<![a-zA-Z])AI(?![a-zA-Z])|人工智能|生成式人工智能|\bGenerative AI\b/
+/发布|上线|开放|融资|收购|商业化|合作|涨价|降价|价格战|监管|版权|商用授权/
+@10
