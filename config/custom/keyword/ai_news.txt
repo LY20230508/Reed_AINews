@@ -11,41 +11,51 @@
 
 [Pexo]
 /(?<![a-zA-Z])pexo(?![a-zA-Z])/
-@10
-
-[AI Agent]
-/\bAI\s*Agents?\b|\bAgentic\b|\bMulti[- ]Agents?\b|\bAgent Workflows?\b|智能体|多智能体|工具调用|\bTool Calling\b|\bFunction Calling\b|\bComputer Use\b|\bModel Context Protocol\b|(?<![a-zA-Z])MCP(?![a-zA-Z])|\bAgent Skills?\b|\bAgent Memory\b|\bContext Engineering\b|工作流自动化/
-@15
+@3
 
 [生成式媒体]
-/文生视频|图生视频|视频生成|生成式视频|图像生成|多模态生成|AI\s*视频|视频\s*AI|数字人|虚拟人|语音生成|音乐生成|\bSeedance\b|\bSeedream\b|\bSora\b|\bVeo\s*\d*\b|\bKling\b|可灵|\bRunway\b|\bPika\b|\bHunyuanVideo\b|混元视频|\bWan\s*\d+(?:\.\d+)?\b|万相|即梦|海螺视频|\bDream Machine\b|\bVidu\b|\bGemini Image\b|\bGPT Image\b|\bfal\.ai\b|\bElevenLabs\b/
-@15
+/文生视频|图生视频|视频生成|生成式视频|图像生成|多模态生成|AI\s*视频|视频\s*AI|数字人|虚拟人|语音生成|音乐生成|\bSeedance\b|\bSeedream\b|\bSora\b|\bVeo\s*\d*\b|\bKling\b|可灵|\bRunway\b|\bGen[- ]?4\b|\bAleph\b|\bPika\b|\bHunyuanVideo\b|混元视频|\bWan\s*\d+(?:\.\d+)?\b|万相|即梦|海螺视频|\bHailuo\b|\bDream Machine\b|\bLuma\b|\bRay\s*\d+(?:\.\d+)?\b|\bVidu\b|\bLTX[- ]?Video\b|\bHiggsfield\b|\bPixVerse\b|\bHedra\b|\bGemini Image\b|\bGPT Image\b|\bfal\.ai\b|\bReplicate\b|\bElevenLabs\b/
+@6
 
-[AI 创作技术]
-/视频编辑|实时生成|角色一致性|长视频生成|可控生成|数字人|语音生成|音乐生成|AI\s*剪辑|智能剪辑/
-@15
+[创作产品与竞品]
+/即梦|可灵|\bKling\b|\bRunway\b|\bCanva(?: Video)?\b|\bAdobe Firefly(?: Video)?\b|剪映|\bCapCut\b|\bHeyGen\b|\bSynthesia\b|\bInVideo\b|\bVEED\b|\bDescript\b|\bOpusClip\b|\bLuma\b|\bHiggsfield\b|\bPixVerse\b|\bHedra\b/
+@6
 
 [内容与素材工作流]
-/\bURL to Video\b|网页转视频|素材管理|数字资产管理|\bDigital Asset Management\b|背景移除|\bBackground Removal\b|\bBrand Kit\b|\bContent Library\b|内容自动化|批量创作/
-@15
+/\bURL to Video\b|网页转视频|素材管理|数字资产管理|\bDigital Asset Management\b|背景移除|\bBackground Removal\b|\bBrand Kit\b|\bContent Library\b|内容自动化|批量创作|广告素材|\bAd Creative\b|\bCreative Automation\b|\bUGC\b|故事板|\bStoryboard\b|口型同步|\bLip Sync\b|配音|\bDubbing\b|参考视频|\bReference Video\b/
+@5
+
+[AI 创作技术]
+/视频编辑|实时生成|角色一致性|长视频生成|可控生成|数字人|语音生成|音乐生成|AI\s*剪辑|智能剪辑|镜头控制|运动控制|首尾帧|主体一致性/
+@4
+
+[AI Agent]
+/\bAI\s*Agents?\b|\bAgentic\b|\bMulti[- ]Agents?\b|\bAgent Workflows?\b|智能体|多智能体|工具调用|\bTool Calling\b|\bFunction Calling\b|\bComputer Use\b|\bBrowser Use\b|\bModel Context Protocol\b|(?<![a-zA-Z])MCP(?![a-zA-Z])|\bMCP Apps?\b|\bMCP Registry\b|\bAgent2Agent\b|(?<![a-zA-Z])A2A(?![a-zA-Z])|\bAgent Development Kit\b|(?<![a-zA-Z])ADK(?![a-zA-Z])|\bAgents SDK\b|\bResponses API\b|\bAgent Skills?\b|\bAgent Memory\b|\bContext Engineering\b|工作流自动化/
+@5
+
+[模型发布与 API]
++/大模型|基础模型|多模态|推理模型|开源模型|\bLLM\b|\bVLM\b|\bOpenAI\b|\bChatGPT\b|\bAnthropic\b|\bClaude\b|\bGemini\b|\bDeepMind\b|\bDeepSeek\b|\bQwen\b|通义千问|\bGLM\b|智谱|\bMiniMax\b|\bKimi\b|\bMoonshot\b|\bLlama\b|\bMistral\b|\bGrok\b|\bxAI\b|字节\s*Seed/
+/发布|上线|更新|升级|开放|开源|正式版|接入|API|SDK|权重|模型卡|系统卡|上下文|价格|降价|弃用|迁移|\bReleases?\b|\bChangelog\b|\bUpdates?\b|\bLaunch(?:es|ed)?\b|\bIntroducing\b|\bAvailable\b|\bPreview\b|\bDeprecated?\b|\bOpen[- ]Weights?\b|\bModel Card\b|\bSystem Card\b/
+@6
+
+[模型技术进展]
++/模型|多模态|推理|训练|\bLLM\b|\bVLM\b|\bOpenAI\b|\bAnthropic\b|\bClaude\b|\bGemini\b|\bDeepSeek\b|\bQwen\b|\bGLM\b|\bMiniMax\b|\bKimi\b|\bLlama\b|\bMistral\b/
+/架构|训练|推理|量化|蒸馏|缓存|吞吐|延迟|显存|内存|部署|运行|单卡|微调|强化学习|后训练|注意力|路由|\bBenchmark\b|\bRAM\b|\bVRAM\b|\bGPU\b|\bAMD\b|\bMI\d+X\b|\btok(?:ens?)?/s\b|\bthroughput\b|\blatency\b|\brouter\b|评测/
+@4
+
+[AI 推理基础设施]
+/推理服务|推测解码|\bAI Inference\b|\bLLM Inference\b|\bModel Serving\b|\bKV (?:Cache|Replication)\b|\bSpeculative (?:Decoding|Replication)\b|\bvLLM\b|\bSGLang\b|\bTensorRT(?:-LLM)?\b/
+@3
 
 [AI 评测与榜单]
 /AI\s*评测|模型评测|多模态评测|视频生成评测|\bAgent Eval\b|\bVBench\b|人工盲评|(?=.*(?:AI|模型|多模态|视频生成|Agent|智能体))(?=.*(?:排行榜|基准测试|Benchmark|Leaderboard)).*/
-@15
-
-[创作产品与竞品]
-/即梦|可灵|\bKling\b|\bRunway\b|\bCanva(?: Video)?\b|\bAdobe Firefly(?: Video)?\b|剪映|\bCapCut\b|\bHeyGen\b|\bSynthesia\b|\bInVideo\b|\bVEED\b|\bDescript\b|\bOpusClip\b/
-@15
+@3
 
 [AI 编程]
 /AI\s*编程|\bAI Coding\b|\bCoding Agent\b|\bClaude Code\b|\bOpenAI Codex\b|\bCursor\b|\bGitHub Copilot\b/
-@10
-
-[基础模型与多模态]
-/大模型|基础模型|多模态|推理模型|模型训练|模型推理|开源模型|\bLLM\b|\bVLM\b|\bOpenAI\b|\bChatGPT\b|\bAnthropic\b|\bClaude\b|\bGemini\b|\bDeepMind\b|\bDeepSeek\b|\bQwen\b|通义千问|\bGLM\b|智谱|\bMiniMax\b|\bKimi\b|\bMoonshot\b|\bLlama\b|\bMistral\b|\bGrok\b|\bxAI\b/
-@15
+@3
 
 [AI 产业动态]
-+/(?<![a-zA-Z])AI(?![a-zA-Z])|人工智能|生成式人工智能|\bGenerative AI\b/
-/发布|上线|开放|融资|收购|商业化|合作|涨价|降价|价格战|监管|版权|商用授权/
-@10
++/(?<![a-zA-Z])AI(?![a-zA-Z])|人工智能|生成式人工智能|\bGenerative AI\b|\bOpenAI\b|\bAnthropic\b|\bDeepMind\b|\bDeepSeek\b|\bMiniMax\b|\bMoonshot\b|\bxAI\b|智谱|字节\s*Seed/
+/发布|上线|开放|融资|收购|商业化|合作|涨价|降价|价格战|监管|版权|诉讼|和解|商用授权|算力采购/
+@3
