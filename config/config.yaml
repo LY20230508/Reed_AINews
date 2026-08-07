@@ -243,24 +243,6 @@ rss:
       max_items: 10
       max_age_days: 3
 
-    - id: "xinzhiyuan-wechat"
-      name: "新智元"
-      url: "https://plink.anyfeeder.com/weixin/AI_era"
-      max_items: 10
-      max_age_days: 2
-
-    - id: "qbitai"
-      name: "量子位"
-      url: "https://www.qbitai.com/feed/"
-      max_items: 5
-      max_age_days: 2
-
-    - id: "jiqizhixin-wechat"
-      name: "机器之心"
-      url: "https://plink.anyfeeder.com/weixin/almosthuman2014"
-      max_items: 5
-      max_age_days: 2
-
     # 自定义源示例
     # - id: "custom-feed"
     #   name: "自定义源"
@@ -372,9 +354,6 @@ display:
       - "claude-code-releases"
       - "openai-agents-python-releases"
       - "google-adk-python-releases"
-      - "xinzhiyuan-wechat"
-      - "qbitai"
-      - "jiqizhixin-wechat"
     max_items: 0                                 # 每个源最多展示条数（0=不限制）
 
 
